@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'MacCalendar' in project 'MacCalendar' (no dependencies)

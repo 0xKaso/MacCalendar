@@ -52,6 +52,15 @@ struct EventListView: View {
                             NSApp.keyWindow?.makeFirstResponder(nil)
                         }
                     }
+                    .onSubmit {
+                        // 回车快速添加
+                        guard !newTodoTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+                        let title = newTodoTitle
+                        newTodoTitle = ""
+                        Task {
+                            await calendarManager.addTodo(title: title, for: calendarManager.selectedDay)
+                        }
+                    }
                 Button("添加") {
                     let title = newTodoTitle
                     newTodoTitle = ""
